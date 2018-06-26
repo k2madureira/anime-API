@@ -14,18 +14,15 @@ header("Access-Control-Allow-Origin: *");
 $url = 'https://www.animesonlinebr.com.br/animes-legendados.html';
 $html = file_get_contents($url);
 $pattern = '/<li><a title="(.*s)"/';
-  
+$pattern_link= '/<li><a title="(.*s)" href="(https://www.animesonlinebr.com.br/legendados/.*)"/';  
 
 preg_match_all($pattern,$html,$matches);
 
 
-//var_dump($matches_link);
-
 $count=1;
 
-
 foreach($matches as $key){
-    foreach($key as $x=> $valor) {
+    foreach($key as $valor) {
         
         if($count == 2){
 
@@ -33,8 +30,7 @@ foreach($matches as $key){
             $str = deleteAccents($str);
             $str_position = substr($str,0,1);
 
-           $info[$str_position][$x]['name']=$str;
-           $info[$str_position][$x]['info']='http://localhost/anime api/ani_info.php?data='.$x;
+           $aniName[$str_position][]=$str;
            
         }      
     }
@@ -64,7 +60,5 @@ function deleteAccents ($string){
 }
 
 
-
-$info = json_encode($info);
-
-echo "$info"; 
+$aniName = json_encode($aniName);
+echo "$aniName"; 
