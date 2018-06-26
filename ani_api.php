@@ -34,7 +34,8 @@ foreach($matches as $key){
             $str_position = substr($str,0,1);
 
            $info[$str_position][$x]['name']=$str;
-           $info[$str_position][$x]['info']='http://localhost/anime api/ani_info.php?data='.$x;
+           $info[$str_position][$x]['info']='https://twoconeb.000webhostapp.com/projetos/anime_API/ani_info.php?data='.$x;
+           //$info[$str_position][$x]['info']='http://localhost/anime api/ani_info.php?data='.$x;
            
         }      
     }
